@@ -38,4 +38,11 @@ public interface IUsersDao {
 	 * @return 用户信息
 	 */
 	Users findByName(String name);
+	/**
+	 * 
+	 * 方法描述：重置密码
+	 * @param users
+	 * @return 影响行数
+	 */
+	int resetpwd(Users users);
 }
