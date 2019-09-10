@@ -62,7 +62,40 @@ public class UsersServlet extends HttpServlet {
 		}else if (action.equals("logout")) {
 			// 退出
 			logout(request, response);
+		}else if (action.equals("resetpwd")) {
+			resetpwd(request, response);
 		}
+	}
+
+	protected void resetpwd(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		// 获取注册信息
+		String name = request.getParameter("name");
+		String realname = request.getParameter("realname");
+		String sex = request.getParameter("sex");
+		String age = request.getParameter("age");
+		String card = request.getParameter("card");
+		String address = request.getParameter("address");
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
+		String code = request.getParameter("code");
+		String pwd = request.getParameter("pwd");
+		Users user = new Users(name, pwd, realname, sex, age, card, address, phone, email, code);
+
+		int result = usersService.resetpwd(user);
+		if (result == 1) {
+			out.write("<script>" + "alert('重置密码成功!');" + "window.location.href='" + request.getContextPath()
+					+ "/qiantai/login.jsp';" + "</script>");
+		} else if (result == -1) {
+			out.write("<script>" + "alert('填写信息有误，请确认无误后点击重置密码!');" + "window.location.href='"
+					+ request.getContextPath() + "/qiantai/resetpwd.jsp';" + "</script>");
+		} else {
+			out.write("<script>" + "alert('重置密码失败!!');" + "window.location.href='" + request.getContextPath()
+					+ "/qiantai/resetpwd.jsp';" + "</script>");
+		}
+
+	}
 	}
 	肖晓(1531310759) 2019/9/9 11:27:16
 
