@@ -43,5 +43,18 @@ public class UsersServiceImpl implements UsersService {
 			return usersdao.reg(users);
 		}
 	}
-	
+	@Override
+	public int resetpwd(Users user) {
+		Users user0=usersdao.findByName(user.getName());
+		if(user.getRealname().equals(user0.getRealname())&&user.getSex().equals(user0.getSex())
+	    		&&user.getSex().equals(user0.getSex())&&user.getAge().equals(user0.getAge())
+	    		&&user.getCard().equals(user0.getCard())&&user.getAddress().equals(user0.getAddress())
+	    		&&user.getPhone().equals(user0.getPhone())&&user.getEmail().equals(user0.getEmail())
+	    		&&user.getCode().equals(user0.getCode())){
+			return usersdao.resetpwd(user);
+		}else{
+			return -1;
+		}
+		
+	}
 }
