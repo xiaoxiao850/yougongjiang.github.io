@@ -80,6 +80,19 @@ public class UsersDaoImpl implements IUsersDao {
 		
 		return user;
 	}	
-	
+	@Override
+	public int resetpwd(Users users) {
+		String sql="update users set pwd=? where name=?";
+		Object[] param={users.getPwd(),users.getName()};
+		int result=0;
+		try {
+			result=dbutil.execute(sql, param);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return result;
+	}
+
 
 }
