@@ -25,4 +25,11 @@ public interface UsersService {
 	 * @return 影响行数
 	 */
 	int reg(Users users);
+	/**
+	 * 
+	 * 方法描述：重置密码
+	 * @param users
+	 * @return 影响行数
+	 */
+	int resetpwd(Users users);
 }
